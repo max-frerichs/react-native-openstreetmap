@@ -11,8 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
-import org.osmdroid.tileprovider.tilesource.ITileSource;
-import org.osmdroid.tileprovider.tilesource.XYTileSource;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
@@ -51,10 +50,8 @@ public class OSMapView extends AppCompatActivity {
         IMapController mapController = map.getController();
 
         // TODO: Fix the user agent error by providing proper ID or changing the map tile provider
-        final ITileSource tileSource = new XYTileSource( "HOT", 1, 20, 256, ".png",
-                new String[] {
-                        "https://maps.wikimedia.org"});
-        map.setTileSource(tileSource);
+
+        map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
         map.setMultiTouchControls(true);
         // sets zoom level and centers the map
         mapController.setZoom(1.5);
