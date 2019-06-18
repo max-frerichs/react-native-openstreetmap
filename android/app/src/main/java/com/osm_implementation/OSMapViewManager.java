@@ -11,7 +11,7 @@ import org.osmdroid.views.MapView;
 
 public class OSMapViewManager extends ViewGroupManager<MapView> {
     public ThemedReactContext mContext = null;
-    private Activity mActivity = null;
+    public Activity mActivity;
     public static MapController mapController = null;
     // Defines the
     public static final String REACT_CLASS = "MapView";
@@ -33,6 +33,7 @@ public class OSMapViewManager extends ViewGroupManager<MapView> {
         TODO: Add more properties in further development
         TODO: Create some spicy tests
     */
+
 
     @ReactProp(name = "zoomLevel")
     public static void setZoom(MapView view, double zoomLevel) {
