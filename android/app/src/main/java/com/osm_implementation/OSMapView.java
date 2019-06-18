@@ -24,6 +24,8 @@ public class OSMapView extends AppCompatActivity {
     // Creates map instance from
     @Override public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Sets the user agent with application ID.
         Configuration.getInstance().setUserAgentValue(BuildConfig.APPLICATION_ID);
         Context ctx = getApplicationContext();
 
@@ -47,11 +49,11 @@ public class OSMapView extends AppCompatActivity {
         setContentView(R.layout.map_view);
         map = (MapView) findViewById(R.id.map);
         IMapController mapController = map.getController();
+
+        // TODO: Fix the user agent error by providing proper ID or changing the map tile provider
         final ITileSource tileSource = new XYTileSource( "HOT", 1, 20, 256, ".png",
                 new String[] {
-                        "http://a.tile.openstreetmap.de/",
-                        "http://b.tile.openstreetmap.de/",
-                        "http://c.tile.openstreetmap.de/" },"©OpenStreetMap contributors");
+                        "https://maps.wikimedia.org"});
         map.setTileSource(tileSource);
         map.setMultiTouchControls(true);
         // sets zoom level and centers the map
